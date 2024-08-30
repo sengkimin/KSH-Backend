@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "beneficiary_id": {
-      "type": "integer"
-    },
     "fullname_english": {
       "type": "string"
     },

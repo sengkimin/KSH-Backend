@@ -742,7 +742,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -800,7 +799,6 @@ export interface ApiBeneficiaryBeneficiary extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    beneficiary_id: Attribute.Integer;
     fullname_english: Attribute.String;
     fullname_khmer: Attribute.String;
     profile_img_url: Attribute.Media<
@@ -866,35 +864,49 @@ export interface ApiCurriculumCurriculum extends Schema.CollectionType {
   };
 }
 
-export interface ApiCurriculumRegistrationCurriculumRegistration
+export interface ApiCurriculumProgramLevelCurriculumProgramLevel
   extends Schema.CollectionType {
-  collectionName: 'curriculum_registrations';
+  collectionName: 'curriculum_program_levels';
   info: {
-    singularName: 'curriculum-registration';
-    pluralName: 'curriculum-registrations';
-    displayName: 'Curriculum_Registration';
+    singularName: 'curriculum-program-level';
+    pluralName: 'curriculum-program-levels';
+    displayName: 'Curriculum_Program_Level';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    curriculum_registration_id: Attribute.Integer;
-    curriculum_program_level_id: Attribute.Integer;
-    beneficiary_id: Attribute.Integer;
-    start_date: Attribute.Date;
-    end_date: Attribute.Date;
-    description: Attribute.Text;
+    knowledge_idp: Attribute.Text;
+    training_program: Attribute.Text;
+    resident_disability_level: Attribute.Text;
+    activity: Attribute.Component<'activity.activity', true>;
+    residents: Attribute.Relation<
+      'api::curriculum-program-level.curriculum-program-level',
+      'oneToMany',
+      'api::beneficiary.beneficiary'
+    >;
+    program_level: Attribute.Relation<
+      'api::curriculum-program-level.curriculum-program-level',
+      'oneToOne',
+      'api::program.program'
+    >;
+    curriculum: Attribute.Relation<
+      'api::curriculum-program-level.curriculum-program-level',
+      'oneToOne',
+      'api::curriculum.curriculum'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::curriculum-registration.curriculum-registration',
+      'api::curriculum-program-level.curriculum-program-level',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::curriculum-registration.curriculum-registration',
+      'api::curriculum-program-level.curriculum-program-level',
       'oneToOne',
       'admin::user'
     > &
@@ -985,12 +997,12 @@ export interface ApiInternshipInternship extends Schema.CollectionType {
     singularName: 'internship';
     pluralName: 'internships';
     displayName: 'Internship';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    internship_id: Attribute.Integer;
     working_place_name: Attribute.String;
     working_address: Attribute.String;
     is_inside: Attribute.Boolean;
@@ -1175,7 +1187,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::beneficiary.beneficiary': ApiBeneficiaryBeneficiary;
       'api::curriculum.curriculum': ApiCurriculumCurriculum;
-      'api::curriculum-registration.curriculum-registration': ApiCurriculumRegistrationCurriculumRegistration;
+      'api::curriculum-program-level.curriculum-program-level': ApiCurriculumProgramLevelCurriculumProgramLevel;
       'api::curriculum-schedule.curriculum-schedule': ApiCurriculumScheduleCurriculumSchedule;
       'api::curriculum-schedule-template.curriculum-schedule-template': ApiCurriculumScheduleTemplateCurriculumScheduleTemplate;
       'api::internship.internship': ApiInternshipInternship;

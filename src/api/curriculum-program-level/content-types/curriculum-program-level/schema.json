@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "curriculum_program_levels",
+  "info": {
+    "singularName": "curriculum-program-level",
+    "pluralName": "curriculum-program-levels",
+    "displayName": "Curriculum_Program_Level",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "knowledge_idp": {
+      "type": "text"
+    },
+    "training_program": {
+      "type": "text"
+    },
+    "resident_disability_level": {
+      "type": "text"
+    },
+    "activity": {
+      "displayName": "activity",
+      "type": "component",
+      "repeatable": true,
+      "component": "activity.activity"
+    },
+    "residents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::beneficiary.beneficiary"
+    },
+    "program_level": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::program.program"
+    },
+    "curriculum": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::curriculum.curriculum"
+    }
+  }
+}

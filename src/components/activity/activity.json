@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_activity_activities",
+  "info": {
+    "displayName": "activity",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "activity_time": {
+      "type": "time"
+    },
+    "program_activity": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::program-activity.program-activity"
+    }
+  }
+}
