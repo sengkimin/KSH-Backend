@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "score_points",
+  "info": {
+    "singularName": "score-point",
+    "pluralName": "score-points",
+    "displayName": "score_point"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "score_point_id": {
+      "type": "integer"
+    },
+    "images_url": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "score_name": {
+      "type": "string"
+    },
+    "score_point": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

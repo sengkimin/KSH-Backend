@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "beneficiaries",
+  "info": {
+    "singularName": "beneficiary",
+    "pluralName": "beneficiaries",
+    "displayName": "Resident",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "beneficiary_id": {
+      "type": "integer"
+    },
+    "fullname_english": {
+      "type": "string"
+    },
+    "fullname_khmer": {
+      "type": "string"
+    },
+    "profile_img_url": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "type_of_disability": {
+      "type": "string"
+    },
+    "date_of_birth": {
+      "type": "date"
+    },
+    "is_required_medical_use": {
+      "type": "boolean"
+    },
+    "medical_use": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Famale"
+      ]
+    },
+    "is_active": {
+      "type": "boolean"
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
+    }
+  }
+}

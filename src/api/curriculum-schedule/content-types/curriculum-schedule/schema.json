@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "curriculum_schedules",
+  "info": {
+    "singularName": "curriculum-schedule",
+    "pluralName": "curriculum-schedules",
+    "displayName": "Curriculum_Schedule"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "curriculum_schedule_tid": {
+      "type": "integer"
+    },
+    "activity_date": {
+      "type": "date"
+    },
+    "curriculum_registration_id": {
+      "type": "integer"
+    },
+    "program_activity_id": {
+      "type": "integer"
+    },
+    "score_point_id": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "text"
+    },
+    "create_by": {
+      "type": "integer"
+    },
+    "update_by": {
+      "type": "integer"
+    },
+    "create_datetime": {
+      "type": "datetime"
+    },
+    "update_datetime": {
+      "type": "datetime"
+    }
+  }
+}

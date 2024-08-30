@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "programs",
+  "info": {
+    "singularName": "program",
+    "pluralName": "programs",
+    "displayName": "Program_Level",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "program_level_name": {
+      "type": "string"
+    },
+    "program_level_order": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

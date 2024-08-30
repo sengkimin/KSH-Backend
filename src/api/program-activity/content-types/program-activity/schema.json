@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "program_activities",
+  "info": {
+    "singularName": "program-activity",
+    "pluralName": "program-activities",
+    "displayName": "Program_Activity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female",
+        "All"
+      ]
+    },
+    "program_activity_name": {
+      "type": "string"
+    },
+    "img_url": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "program_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::program-type.program-type"
+    }
+  }
+}
