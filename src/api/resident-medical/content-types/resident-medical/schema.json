@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resident_medicals",
+  "info": {
+    "singularName": "resident-medical",
+    "pluralName": "resident-medicals",
+    "displayName": "Resident_Medical"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "medical_treatment": {
+      "type": "text"
+    },
+    "doctor": {
+      "type": "string"
+    },
+    "treatment_date": {
+      "type": "date"
+    },
+    "specailist_doctor_comment": {
+      "type": "text"
+    },
+    "next_appointment_datetime": {
+      "type": "datetime"
+    },
+    "next_appointment_remark": {
+      "type": "text"
+    },
+    "last_prescription_document": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "medicine_document": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

@@ -38,6 +38,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::program-type.program-type"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

@@ -770,6 +770,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    profile_img: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1082,6 +1083,7 @@ export interface ApiProgramActivityProgramActivity
       'oneToOne',
       'api::program-type.program-type'
     >;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1126,6 +1128,126 @@ export interface ApiProgramTypeProgramType extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::program-type.program-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiResidentChecklistResidentChecklist
+  extends Schema.CollectionType {
+  collectionName: 'resident_checklists';
+  info: {
+    singularName: 'resident-checklist';
+    pluralName: 'resident-checklists';
+    displayName: 'Resident_Checklist';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    checklist_date: Attribute.Date;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::resident-checklist.resident-checklist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::resident-checklist.resident-checklist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiResidentDocumentResidentDocument
+  extends Schema.CollectionType {
+  collectionName: 'resident_documents';
+  info: {
+    singularName: 'resident-document';
+    pluralName: 'resident-documents';
+    displayName: 'Resident_Document';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    document_title: Attribute.String;
+    document_multiple_medai: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    document_type: Attribute.Enumeration<
+      [
+        'Identity Card',
+        'Family Book',
+        'Birth Certificate',
+        'Poor ID Card',
+        'Passport'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::resident-document.resident-document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::resident-document.resident-document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiResidentMedicalResidentMedical
+  extends Schema.CollectionType {
+  collectionName: 'resident_medicals';
+  info: {
+    singularName: 'resident-medical';
+    pluralName: 'resident-medicals';
+    displayName: 'Resident_Medical';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    medical_treatment: Attribute.Text;
+    doctor: Attribute.String;
+    treatment_date: Attribute.Date;
+    specailist_doctor_comment: Attribute.Text;
+    next_appointment_datetime: Attribute.DateTime;
+    next_appointment_remark: Attribute.Text;
+    last_prescription_document: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    medicine_document: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::resident-medical.resident-medical',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::resident-medical.resident-medical',
       'oneToOne',
       'admin::user'
     > &
@@ -1194,6 +1316,9 @@ declare module '@strapi/types' {
       'api::program.program': ApiProgramProgram;
       'api::program-activity.program-activity': ApiProgramActivityProgramActivity;
       'api::program-type.program-type': ApiProgramTypeProgramType;
+      'api::resident-checklist.resident-checklist': ApiResidentChecklistResidentChecklist;
+      'api::resident-document.resident-document': ApiResidentDocumentResidentDocument;
+      'api::resident-medical.resident-medical': ApiResidentMedicalResidentMedical;
       'api::score-point.score-point': ApiScorePointScorePoint;
     }
   }

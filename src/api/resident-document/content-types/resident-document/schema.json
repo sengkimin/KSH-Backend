@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resident_documents",
+  "info": {
+    "singularName": "resident-document",
+    "pluralName": "resident-documents",
+    "displayName": "Resident_Document"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "document_title": {
+      "type": "string"
+    },
+    "document_multiple_medai": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "document_type": {
+      "type": "enumeration",
+      "enum": [
+        "Identity Card",
+        "Family Book",
+        "Birth Certificate",
+        "Poor ID Card",
+        "Passport"
+      ]
+    }
+  }
+}

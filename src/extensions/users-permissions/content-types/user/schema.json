@@ -64,6 +64,17 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
+    },
+    "profile_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resident_checklists",
+  "info": {
+    "singularName": "resident-checklist",
+    "pluralName": "resident-checklists",
+    "displayName": "Resident_Checklist"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "checklist_date": {
+      "type": "date"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
