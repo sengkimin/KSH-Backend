@@ -11,8 +11,29 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "curriculum_schedule": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::curriculum-schedule.curriculum-schedule"
+    },
+    "resident": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::beneficiary.beneficiary"
+    },
+    "program_activity": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::program-activity.program-activity"
+    },
+    "score_point": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::score-point.score-point"
+    },
     "checklist_date": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "description": {
       "type": "text"

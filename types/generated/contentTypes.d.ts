@@ -814,6 +814,11 @@ export interface ApiBeneficiaryBeneficiary extends Schema.CollectionType {
     is_active: Attribute.Boolean;
     start_date: Attribute.Date;
     end_date: Attribute.Date;
+    resident_documents: Attribute.Relation<
+      'api::beneficiary.beneficiary',
+      'oneToMany',
+      'api::resident-document.resident-document'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -922,69 +927,31 @@ export interface ApiCurriculumScheduleCurriculumSchedule
     singularName: 'curriculum-schedule';
     pluralName: 'curriculum-schedules';
     displayName: 'Curriculum_Schedule';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    curriculum_schedule_tid: Attribute.Integer;
-    activity_date: Attribute.Date;
-    curriculum_registration_id: Attribute.Integer;
-    program_activity_id: Attribute.Integer;
-    score_point_id: Attribute.Integer;
-    description: Attribute.Text;
-    create_by: Attribute.Integer;
-    update_by: Attribute.Integer;
-    create_datetime: Attribute.DateTime;
-    update_datetime: Attribute.DateTime;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::curriculum-schedule.curriculum-schedule',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::curriculum-schedule.curriculum-schedule',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCurriculumScheduleTemplateCurriculumScheduleTemplate
-  extends Schema.CollectionType {
-  collectionName: 'curriculum_schedule_templates';
-  info: {
-    singularName: 'curriculum-schedule-template';
-    pluralName: 'curriculum-schedule-templates';
-    displayName: 'Curriculum_Schedule_Template';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    curriculum_schedule_template_id: Attribute.Integer;
-    curriculum_program_level_id: Attribute.Integer;
-    day_of_week: Attribute.Enumeration<
-      ['Mon', 'Thu', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun']
+    training_code: Attribute.String;
+    from_date: Attribute.Date;
+    to_date: Attribute.Date;
+    curriculum_program_level: Attribute.Relation<
+      'api::curriculum-schedule.curriculum-schedule',
+      'oneToOne',
+      'api::curriculum-program-level.curriculum-program-level'
     >;
-    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::curriculum-schedule-template.curriculum-schedule-template',
+      'api::curriculum-schedule.curriculum-schedule',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::curriculum-schedule-template.curriculum-schedule-template',
+      'api::curriculum-schedule.curriculum-schedule',
       'oneToOne',
       'admin::user'
     > &
@@ -1147,7 +1114,27 @@ export interface ApiResidentChecklistResidentChecklist
     draftAndPublish: true;
   };
   attributes: {
-    checklist_date: Attribute.Date;
+    curriculum_schedule: Attribute.Relation<
+      'api::resident-checklist.resident-checklist',
+      'oneToOne',
+      'api::curriculum-schedule.curriculum-schedule'
+    >;
+    resident: Attribute.Relation<
+      'api::resident-checklist.resident-checklist',
+      'oneToOne',
+      'api::beneficiary.beneficiary'
+    >;
+    program_activity: Attribute.Relation<
+      'api::resident-checklist.resident-checklist',
+      'oneToOne',
+      'api::program-activity.program-activity'
+    >;
+    score_point: Attribute.Relation<
+      'api::resident-checklist.resident-checklist',
+      'oneToOne',
+      'api::score-point.score-point'
+    >;
+    checklist_date: Attribute.Date & Attribute.Required;
     description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1174,25 +1161,15 @@ export interface ApiResidentDocumentResidentDocument
     singularName: 'resident-document';
     pluralName: 'resident-documents';
     displayName: 'Resident_Document';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     document_title: Attribute.String;
-    document_multiple_medai: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    document_type: Attribute.Enumeration<
-      [
-        'Identity Card',
-        'Family Book',
-        'Birth Certificate',
-        'Poor ID Card',
-        'Passport'
-      ]
-    >;
+    document: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    document_type: Attribute.Enumeration<['Identity Card', 'Family Book']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1218,6 +1195,7 @@ export interface ApiResidentMedicalResidentMedical
     singularName: 'resident-medical';
     pluralName: 'resident-medicals';
     displayName: 'Resident_Medical';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1227,7 +1205,7 @@ export interface ApiResidentMedicalResidentMedical
     doctor: Attribute.String;
     treatment_date: Attribute.Date;
     specailist_doctor_comment: Attribute.Text;
-    next_appointment_datetime: Attribute.DateTime;
+    next_appointment: Attribute.DateTime;
     next_appointment_remark: Attribute.Text;
     last_prescription_document: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -1236,6 +1214,11 @@ export interface ApiResidentMedicalResidentMedical
     medicine_document: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
+    >;
+    resident: Attribute.Relation<
+      'api::resident-medical.resident-medical',
+      'oneToOne',
+      'api::beneficiary.beneficiary'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1261,13 +1244,13 @@ export interface ApiScorePointScorePoint extends Schema.CollectionType {
     singularName: 'score-point';
     pluralName: 'score-points';
     displayName: 'score_point';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    score_point_id: Attribute.Integer;
-    images_url: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     score_name: Attribute.String;
     score_point: Attribute.Integer;
     description: Attribute.Text;
@@ -1311,7 +1294,6 @@ declare module '@strapi/types' {
       'api::curriculum.curriculum': ApiCurriculumCurriculum;
       'api::curriculum-program-level.curriculum-program-level': ApiCurriculumProgramLevelCurriculumProgramLevel;
       'api::curriculum-schedule.curriculum-schedule': ApiCurriculumScheduleCurriculumSchedule;
-      'api::curriculum-schedule-template.curriculum-schedule-template': ApiCurriculumScheduleTemplateCurriculumScheduleTemplate;
       'api::internship.internship': ApiInternshipInternship;
       'api::program.program': ApiProgramProgram;
       'api::program-activity.program-activity': ApiProgramActivityProgramActivity;

@@ -4,42 +4,27 @@
   "info": {
     "singularName": "curriculum-schedule",
     "pluralName": "curriculum-schedules",
-    "displayName": "Curriculum_Schedule"
+    "displayName": "Curriculum_Schedule",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "curriculum_schedule_tid": {
-      "type": "integer"
+    "training_code": {
+      "type": "string"
     },
-    "activity_date": {
+    "from_date": {
       "type": "date"
     },
-    "curriculum_registration_id": {
-      "type": "integer"
+    "to_date": {
+      "type": "date"
     },
-    "program_activity_id": {
-      "type": "integer"
-    },
-    "score_point_id": {
-      "type": "integer"
-    },
-    "description": {
-      "type": "text"
-    },
-    "create_by": {
-      "type": "integer"
-    },
-    "update_by": {
-      "type": "integer"
-    },
-    "create_datetime": {
-      "type": "datetime"
-    },
-    "update_datetime": {
-      "type": "datetime"
+    "curriculum_program_level": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::curriculum-program-level.curriculum-program-level"
     }
   }
 }

@@ -56,6 +56,11 @@
     },
     "end_date": {
       "type": "date"
+    },
+    "resident_documents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::resident-document.resident-document"
     }
   }
 }

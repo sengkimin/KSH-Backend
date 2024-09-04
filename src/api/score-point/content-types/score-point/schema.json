@@ -4,25 +4,24 @@
   "info": {
     "singularName": "score-point",
     "pluralName": "score-points",
-    "displayName": "score_point"
+    "displayName": "score_point",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "score_point_id": {
-      "type": "integer"
-    },
-    "images_url": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "score_name": {
       "type": "string"

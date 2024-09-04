@@ -4,7 +4,8 @@
   "info": {
     "singularName": "resident-document",
     "pluralName": "resident-documents",
-    "displayName": "Resident_Document"
+    "displayName": "Resident_Document",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,24 +15,22 @@
     "document_title": {
       "type": "string"
     },
-    "document_multiple_medai": {
+    "document": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "document_type": {
       "type": "enumeration",
       "enum": [
         "Identity Card",
-        "Family Book",
-        "Birth Certificate",
-        "Poor ID Card",
-        "Passport"
+        "Family Book"
       ]
     }
   }

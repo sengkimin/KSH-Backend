@@ -4,7 +4,8 @@
   "info": {
     "singularName": "resident-medical",
     "pluralName": "resident-medicals",
-    "displayName": "Resident_Medical"
+    "displayName": "Resident_Medical",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,31 +24,38 @@
     "specailist_doctor_comment": {
       "type": "text"
     },
-    "next_appointment_datetime": {
+    "next_appointment": {
       "type": "datetime"
     },
     "next_appointment_remark": {
       "type": "text"
     },
     "last_prescription_document": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "medicine_document": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "resident": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::beneficiary.beneficiary"
     }
   }
 }
