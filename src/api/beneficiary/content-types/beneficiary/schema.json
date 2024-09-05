@@ -57,10 +57,28 @@
     "end_date": {
       "type": "date"
     },
-    "resident_documents": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::resident-document.resident-document"
+    "document_type": {
+      "type": "enumeration",
+      "enum": [
+        "Identity Card",
+        "Family Book ",
+        "Birth Certificate",
+        "Poor ID Card",
+        "Passport"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "file_media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

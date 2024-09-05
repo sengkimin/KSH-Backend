@@ -814,11 +814,17 @@ export interface ApiBeneficiaryBeneficiary extends Schema.CollectionType {
     is_active: Attribute.Boolean;
     start_date: Attribute.Date;
     end_date: Attribute.Date;
-    resident_documents: Attribute.Relation<
-      'api::beneficiary.beneficiary',
-      'oneToMany',
-      'api::resident-document.resident-document'
+    document_type: Attribute.Enumeration<
+      [
+        'Identity Card',
+        'Family Book ',
+        'Birth Certificate',
+        'Poor ID Card',
+        'Passport'
+      ]
     >;
+    description: Attribute.Text;
+    file_media: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1109,6 +1115,7 @@ export interface ApiResidentChecklistResidentChecklist
     singularName: 'resident-checklist';
     pluralName: 'resident-checklists';
     displayName: 'Resident_Checklist';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1136,6 +1143,7 @@ export interface ApiResidentChecklistResidentChecklist
     >;
     checklist_date: Attribute.Date & Attribute.Required;
     description: Attribute.Text;
+    checklist_time: Attribute.Time;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1147,40 +1155,6 @@ export interface ApiResidentChecklistResidentChecklist
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::resident-checklist.resident-checklist',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiResidentDocumentResidentDocument
-  extends Schema.CollectionType {
-  collectionName: 'resident_documents';
-  info: {
-    singularName: 'resident-document';
-    pluralName: 'resident-documents';
-    displayName: 'Resident_Document';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    document_title: Attribute.String;
-    document: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    document_type: Attribute.Enumeration<['Identity Card', 'Family Book']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::resident-document.resident-document',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::resident-document.resident-document',
       'oneToOne',
       'admin::user'
     > &
@@ -1299,7 +1273,6 @@ declare module '@strapi/types' {
       'api::program-activity.program-activity': ApiProgramActivityProgramActivity;
       'api::program-type.program-type': ApiProgramTypeProgramType;
       'api::resident-checklist.resident-checklist': ApiResidentChecklistResidentChecklist;
-      'api::resident-document.resident-document': ApiResidentDocumentResidentDocument;
       'api::resident-medical.resident-medical': ApiResidentMedicalResidentMedical;
       'api::score-point.score-point': ApiScorePointScorePoint;
     }

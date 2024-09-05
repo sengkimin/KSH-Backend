@@ -4,7 +4,8 @@
   "info": {
     "singularName": "resident-checklist",
     "pluralName": "resident-checklists",
-    "displayName": "Resident_Checklist"
+    "displayName": "Resident_Checklist",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -37,6 +38,9 @@
     },
     "description": {
       "type": "text"
+    },
+    "checklist_time": {
+      "type": "time"
     }
   }
 }
