@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "curriculum_schedule": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::curriculum-schedule.curriculum-schedule"
-    },
     "resident": {
       "type": "relation",
       "relation": "oneToOne",
@@ -41,6 +36,12 @@
     },
     "checklist_time": {
       "type": "time"
+    },
+    "curriculum_schedule": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::curriculum-schedule.curriculum-schedule",
+      "inversedBy": "resident_checklists"
     }
   }
 }

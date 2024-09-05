@@ -25,6 +25,15 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::curriculum-program-level.curriculum-program-level"
+    },
+    "description": {
+      "type": "text"
+    },
+    "resident_checklists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::resident-checklist.resident-checklist",
+      "mappedBy": "curriculum_schedule"
     }
   }
 }

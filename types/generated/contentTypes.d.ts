@@ -937,6 +937,12 @@ export interface ApiCurriculumScheduleCurriculumSchedule
       'oneToOne',
       'api::curriculum-program-level.curriculum-program-level'
     >;
+    description: Attribute.Text;
+    resident_checklists: Attribute.Relation<
+      'api::curriculum-schedule.curriculum-schedule',
+      'oneToMany',
+      'api::resident-checklist.resident-checklist'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1111,11 +1117,6 @@ export interface ApiResidentChecklistResidentChecklist
     draftAndPublish: true;
   };
   attributes: {
-    curriculum_schedule: Attribute.Relation<
-      'api::resident-checklist.resident-checklist',
-      'oneToOne',
-      'api::curriculum-schedule.curriculum-schedule'
-    >;
     resident: Attribute.Relation<
       'api::resident-checklist.resident-checklist',
       'oneToOne',
@@ -1134,6 +1135,11 @@ export interface ApiResidentChecklistResidentChecklist
     checklist_date: Attribute.Date & Attribute.Required;
     description: Attribute.Text;
     checklist_time: Attribute.Time;
+    curriculum_schedule: Attribute.Relation<
+      'api::resident-checklist.resident-checklist',
+      'manyToOne',
+      'api::curriculum-schedule.curriculum-schedule'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
