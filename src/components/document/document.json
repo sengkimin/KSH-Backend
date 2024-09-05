@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_document_documents",
+  "info": {
+    "displayName": "document"
+  },
+  "options": {},
+  "attributes": {
+    "document_type": {
+      "type": "enumeration",
+      "enum": [
+        "Identity Card",
+        "Family Book",
+        "Birth Certificate",
+        "Poor ID Card"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "file_media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

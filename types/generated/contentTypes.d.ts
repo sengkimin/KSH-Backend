@@ -814,17 +814,7 @@ export interface ApiBeneficiaryBeneficiary extends Schema.CollectionType {
     is_active: Attribute.Boolean;
     start_date: Attribute.Date;
     end_date: Attribute.Date;
-    document_type: Attribute.Enumeration<
-      [
-        'Identity Card',
-        'Family Book ',
-        'Birth Certificate',
-        'Poor ID Card',
-        'Passport'
-      ]
-    >;
-    description: Attribute.Text;
-    file_media: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    document: Attribute.Component<'document.document', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

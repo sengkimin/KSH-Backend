@@ -57,28 +57,11 @@
     "end_date": {
       "type": "date"
     },
-    "document_type": {
-      "type": "enumeration",
-      "enum": [
-        "Identity Card",
-        "Family Book ",
-        "Birth Certificate",
-        "Poor ID Card",
-        "Passport"
-      ]
-    },
-    "description": {
-      "type": "text"
-    },
-    "file_media": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+    "document": {
+      "displayName": "document",
+      "type": "component",
+      "repeatable": true,
+      "component": "document.document"
     }
   }
 }
