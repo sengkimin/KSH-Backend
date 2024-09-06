@@ -21,9 +21,6 @@
     "is_inside": {
       "type": "boolean"
     },
-    "beneficiary_id": {
-      "type": "integer"
-    },
     "start_date": {
       "type": "date"
     },
@@ -32,6 +29,11 @@
     },
     "description": {
       "type": "text"
+    },
+    "resident": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::beneficiary.beneficiary"
     }
   }
 }

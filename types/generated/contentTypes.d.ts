@@ -976,10 +976,14 @@ export interface ApiInternshipInternship extends Schema.CollectionType {
     working_place_name: Attribute.String;
     working_address: Attribute.String;
     is_inside: Attribute.Boolean;
-    beneficiary_id: Attribute.Integer;
     start_date: Attribute.Date;
     end_date: Attribute.Date;
     description: Attribute.Text;
+    resident: Attribute.Relation<
+      'api::internship.internship',
+      'oneToOne',
+      'api::beneficiary.beneficiary'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1190,6 +1194,7 @@ export interface ApiResidentMedicalResidentMedical
       'oneToOne',
       'api::beneficiary.beneficiary'
     >;
+    require_to_use: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
