@@ -882,7 +882,7 @@ export interface ApiCurriculumProgramLevelCurriculumProgramLevel
     knowledge_idp: Attribute.Text;
     training_program: Attribute.Text;
     resident_disability_level: Attribute.Text;
-    activity: Attribute.Component<'activity.activity'>;
+    activity: Attribute.Component<'activity.activity', true>;
     residents: Attribute.Relation<
       'api::curriculum-program-level.curriculum-program-level',
       'oneToMany',

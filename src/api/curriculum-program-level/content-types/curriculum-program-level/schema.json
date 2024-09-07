@@ -24,7 +24,7 @@
     "activity": {
       "displayName": "activity",
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "activity.activity"
     },
     "residents": {
