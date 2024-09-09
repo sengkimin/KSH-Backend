@@ -20,7 +20,7 @@
     },
     "profile_img_url": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",

@@ -802,10 +802,7 @@ export interface ApiBeneficiaryBeneficiary extends Schema.CollectionType {
   attributes: {
     fullname_english: Attribute.String;
     fullname_khmer: Attribute.String;
-    profile_img_url: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    profile_img_url: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     type_of_disability: Attribute.String;
     date_of_birth: Attribute.Date;
     is_required_medical_use: Attribute.Boolean;
