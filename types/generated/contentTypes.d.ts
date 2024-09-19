@@ -788,6 +788,37 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAssessmentAssessment extends Schema.CollectionType {
+  collectionName: 'assessments';
+  info: {
+    singularName: 'assessment';
+    pluralName: 'assessments';
+    displayName: 'assessment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.Text;
+    google_form_url: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::assessment.assessment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::assessment.assessment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBeneficiaryBeneficiary extends Schema.CollectionType {
   collectionName: 'beneficiaries';
   info: {
@@ -1262,6 +1293,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::assessment.assessment': ApiAssessmentAssessment;
       'api::beneficiary.beneficiary': ApiBeneficiaryBeneficiary;
       'api::curriculum.curriculum': ApiCurriculumCurriculum;
       'api::curriculum-program-level.curriculum-program-level': ApiCurriculumProgramLevelCurriculumProgramLevel;
