@@ -838,7 +838,7 @@ export interface ApiBeneficiaryBeneficiary extends Schema.CollectionType {
     date_of_birth: Attribute.Date;
     is_required_medical_use: Attribute.Boolean;
     medical_use: Attribute.String;
-    gender: Attribute.Enumeration<['Male', 'Famale']>;
+    gender: Attribute.Enumeration<['Male', 'Female']>;
     is_active: Attribute.Boolean;
     start_date: Attribute.Date;
     end_date: Attribute.Date;

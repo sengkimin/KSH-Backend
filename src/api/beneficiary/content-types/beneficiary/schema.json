@@ -45,7 +45,7 @@
       "type": "enumeration",
       "enum": [
         "Male",
-        "Famale"
+        "Female"
       ]
     },
     "is_active": {
