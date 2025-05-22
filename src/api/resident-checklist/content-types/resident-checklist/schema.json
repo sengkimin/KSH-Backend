@@ -36,12 +36,6 @@
     },
     "checklist_time": {
       "type": "time"
-    },
-    "curriculum_schedule": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::curriculum-schedule.curriculum-schedule",
-      "inversedBy": "resident_checklists"
     }
   }
 }

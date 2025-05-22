@@ -1,5 +1,17 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SalarySalaryDate extends Schema.Component {
+  collectionName: 'components_salary_salary_dates';
+  info: {
+    displayName: 'salary';
+    description: '';
+  };
+  attributes: {
+    date: Attribute.Date;
+    salary: Attribute.Integer;
+  };
+}
+
 export interface DocumentDocument extends Schema.Component {
   collectionName: 'components_document_documents';
   info: {
@@ -34,6 +46,7 @@ export interface ActivityActivity extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'salary.salary-date': SalarySalaryDate;
       'document.document': DocumentDocument;
       'activity.activity': ActivityActivity;
     }

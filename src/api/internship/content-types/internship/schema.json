@@ -12,28 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "working_place_name": {
-      "type": "string"
-    },
-    "working_address": {
-      "type": "string"
-    },
-    "is_inside": {
-      "type": "boolean"
-    },
-    "start_date": {
-      "type": "date"
-    },
-    "end_date": {
-      "type": "date"
-    },
-    "description": {
-      "type": "text"
-    },
     "resident": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::beneficiary.beneficiary"
+    },
+    "date": {
+      "type": "component",
+      "repeatable": true,
+      "component": "salary.salary-date"
     }
   }
 }
