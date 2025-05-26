@@ -9,6 +9,8 @@ export interface SalarySalaryDate extends Schema.Component {
   attributes: {
     date: Attribute.Date;
     salary: Attribute.Integer;
+    Balance: Attribute.Integer;
+    comment: Attribute.Text;
   };
 }
 

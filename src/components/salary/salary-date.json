@@ -11,6 +11,12 @@
     },
     "salary": {
       "type": "integer"
+    },
+    "Balance": {
+      "type": "integer"
+    },
+    "comment": {
+      "type": "text"
     }
   }
 }
