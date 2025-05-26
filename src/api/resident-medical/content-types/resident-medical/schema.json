@@ -30,28 +30,6 @@
     "next_appointment_remark": {
       "type": "text"
     },
-    "last_prescription_document": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "medicine_document": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "resident": {
       "type": "relation",
       "relation": "oneToOne",
@@ -59,6 +37,16 @@
     },
     "require_to_use": {
       "type": "boolean"
+    },
+    "medical_comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::medical-comment.medical-comment"
+    },
+    "medical_url_drives": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::medical-url-drive.medical-url-drive"
     }
   }
 }

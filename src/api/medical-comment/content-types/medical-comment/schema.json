@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "medical_comments",
+  "info": {
+    "singularName": "medical-comment",
+    "pluralName": "medical-comments",
+    "displayName": "Medical_comment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "comment": {
+      "type": "text"
+    },
+    "title": {
+      "type": "text"
+    }
+  }
+}

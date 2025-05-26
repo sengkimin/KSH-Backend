@@ -843,6 +843,11 @@ export interface ApiBeneficiaryBeneficiary extends Schema.CollectionType {
     start_date: Attribute.Date;
     end_date: Attribute.Date;
     document: Attribute.Component<'document.document', true>;
+    internship_salaries: Attribute.Relation<
+      'api::beneficiary.beneficiary',
+      'oneToMany',
+      'api::internship.internship'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -989,19 +994,17 @@ export interface ApiInternshipInternship extends Schema.CollectionType {
   info: {
     singularName: 'internship';
     pluralName: 'internships';
-    displayName: 'Internship';
+    displayName: 'Internship_salary';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    resident: Attribute.Relation<
-      'api::internship.internship',
-      'oneToOne',
-      'api::beneficiary.beneficiary'
-    >;
-    date: Attribute.Component<'salary.salary-date', true>;
+    commment: Attribute.Text;
+    salary: Attribute.Integer;
+    balance: Attribute.Integer;
+    date: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1013,6 +1016,71 @@ export interface ApiInternshipInternship extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::internship.internship',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMedicalCommentMedicalComment extends Schema.CollectionType {
+  collectionName: 'medical_comments';
+  info: {
+    singularName: 'medical-comment';
+    pluralName: 'medical-comments';
+    displayName: 'Medical_comment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    comment: Attribute.Text;
+    title: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::medical-comment.medical-comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::medical-comment.medical-comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMedicalUrlDriveMedicalUrlDrive
+  extends Schema.CollectionType {
+  collectionName: 'medical_url_drives';
+  info: {
+    singularName: 'medical-url-drive';
+    pluralName: 'medical-url-drives';
+    displayName: 'Medical_url_drive';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    drive_url: Attribute.Text;
+    title: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::medical-url-drive.medical-url-drive',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::medical-url-drive.medical-url-drive',
       'oneToOne',
       'admin::user'
     > &
@@ -1194,20 +1262,22 @@ export interface ApiResidentMedicalResidentMedical
     specailist_doctor_comment: Attribute.Text;
     next_appointment: Attribute.DateTime;
     next_appointment_remark: Attribute.Text;
-    last_prescription_document: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    medicine_document: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     resident: Attribute.Relation<
       'api::resident-medical.resident-medical',
       'oneToOne',
       'api::beneficiary.beneficiary'
     >;
     require_to_use: Attribute.Boolean;
+    medical_comments: Attribute.Relation<
+      'api::resident-medical.resident-medical',
+      'oneToMany',
+      'api::medical-comment.medical-comment'
+    >;
+    medical_url_drives: Attribute.Relation<
+      'api::resident-medical.resident-medical',
+      'oneToMany',
+      'api::medical-url-drive.medical-url-drive'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1284,6 +1354,8 @@ declare module '@strapi/types' {
       'api::curriculum-program-level.curriculum-program-level': ApiCurriculumProgramLevelCurriculumProgramLevel;
       'api::curriculum-schedule.curriculum-schedule': ApiCurriculumScheduleCurriculumSchedule;
       'api::internship.internship': ApiInternshipInternship;
+      'api::medical-comment.medical-comment': ApiMedicalCommentMedicalComment;
+      'api::medical-url-drive.medical-url-drive': ApiMedicalUrlDriveMedicalUrlDrive;
       'api::program.program': ApiProgramProgram;
       'api::program-activity.program-activity': ApiProgramActivityProgramActivity;
       'api::program-type.program-type': ApiProgramTypeProgramType;
