@@ -1,0 +1,3 @@
+volumes:
+  - ./package.json:/opt/app/package.json
+  - ./package-lock.json:/opt/app/package-lock.json
