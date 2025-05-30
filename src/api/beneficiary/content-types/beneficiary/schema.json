@@ -62,11 +62,6 @@
       "type": "component",
       "repeatable": true,
       "component": "document.document"
-    },
-    "internship_salaries": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::internship.internship"
     }
   }
 }

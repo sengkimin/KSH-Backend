@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "salary_residents",
+  "info": {
+    "singularName": "salary-resident",
+    "pluralName": "salary-residents",
+    "displayName": "salary_resident"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "resident": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::beneficiary.beneficiary"
+    },
+    "internship_salaries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::internship.internship"
+    }
+  }
+}

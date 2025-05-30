@@ -843,11 +843,6 @@ export interface ApiBeneficiaryBeneficiary extends Schema.CollectionType {
     start_date: Attribute.Date;
     end_date: Attribute.Date;
     document: Attribute.Component<'document.document', true>;
-    internship_salaries: Attribute.Relation<
-      'api::beneficiary.beneficiary',
-      'oneToMany',
-      'api::internship.internship'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1296,6 +1291,45 @@ export interface ApiResidentMedicalResidentMedical
   };
 }
 
+export interface ApiSalaryResidentSalaryResident extends Schema.CollectionType {
+  collectionName: 'salary_residents';
+  info: {
+    singularName: 'salary-resident';
+    pluralName: 'salary-residents';
+    displayName: 'salary_resident';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    resident: Attribute.Relation<
+      'api::salary-resident.salary-resident',
+      'oneToOne',
+      'api::beneficiary.beneficiary'
+    >;
+    internship_salaries: Attribute.Relation<
+      'api::salary-resident.salary-resident',
+      'oneToMany',
+      'api::internship.internship'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::salary-resident.salary-resident',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::salary-resident.salary-resident',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiScorePointScorePoint extends Schema.CollectionType {
   collectionName: 'score_points';
   info: {
@@ -1361,6 +1395,7 @@ declare module '@strapi/types' {
       'api::program-type.program-type': ApiProgramTypeProgramType;
       'api::resident-checklist.resident-checklist': ApiResidentChecklistResidentChecklist;
       'api::resident-medical.resident-medical': ApiResidentMedicalResidentMedical;
+      'api::salary-resident.salary-resident': ApiSalaryResidentSalaryResident;
       'api::score-point.score-point': ApiScorePointScorePoint;
     }
   }
